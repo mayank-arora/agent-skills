@@ -47,6 +47,76 @@ Includes domain-specific checks for frontend, backend, CLI, and mobile.
 
 **Trigger phrases:** `analyze this feature`, `what could go wrong`, `check for edge cases`, `will this break anything`, `find problems with this`, `unknown unknowns`
 
+---
+
+### Senpai
+
+Senior-dev walkthrough of a feature, branch, or PR so you can own code you didn't write line-by-line. Reconstructs the decision sequence, produces an "if I want to change X, touch Y" pointer table, then tests understanding with a hands-on exercise and comprehension questions.
+
+**Trigger phrases:** `senpai`, `walk me through this feature`, `onboard me onto this branch`, `explain what got done`, `quiz me on this`
+
+---
+
+### Handoff
+
+Compacts the current conversation into a handoff document (saved to a temp dir) so a fresh agent can continue the work. Includes a "suggested skills" section and references existing artifacts by path instead of duplicating them.
+
+**Trigger phrases:** `handoff`
+
+---
+
+### Create Devlog
+
+Appends a verbatim, per-repo, gitignored devlog entry (`DEVLOG.md`) and seeds talking points from recent git/PR activity. Records dictated notes word-for-word — never summarized or reworded.
+
+**Trigger phrases:** `devlog`, `create devlog`, `log this`, `dev log entry`
+
+---
+
+### PR Comments
+
+Fetches PR review comments, researches each against the codebase, assesses validity, and presents an action plan — for approval **before** any code changes.
+
+**Trigger phrases:** `pr-comments`, `review pr comments`, `check pr feedback`
+
+---
+
+### PR Post
+
+Post-push CI verification and fix workflow — checks GitHub Actions status after a push and fixes failures.
+
+**Trigger phrases:** `pr-post`, `check ci`, `fix ci`, `are checks passing`
+
+---
+
+### Add Tech Debt
+
+Appends a tech-debt entry (architectural smells, non-blocking design flaws discovered mid-task) to a project tech-debt log.
+
+**Trigger phrases:** `add tech debt`, `log tech debt`
+
+> Writes to `docs/tech-debt-log.md` by default — adjust the path in `SKILL.md` for your repo.
+
+---
+
+### Knowledge Harvester
+
+Builds a comprehensive, source-cited knowledge base on a feature or process by fanning out across code, databases, your issue tracker, wiki, chat, and git history, saving structured docs to a `docs/features/<topic>/` tree.
+
+**Trigger phrases:** `harvest knowledge on X`, `document everything about X`, `build the X knowledge base`
+
+> `references/sources.md` is a template — fill in your project's sources (repo layout, DB connection, tracker/wiki/chat) on first use.
+
+---
+
+### Feature Spec
+
+Builds a non-ambiguous, provenance-tagged product spec for a feature area — a behavioral oracle to test the feature against. Researches every reachable source, then interrogates you to resolve every ambiguity before writing.
+
+**Trigger phrases:** `feature-spec`, `write the spec for X`, `spec out this feature`
+
+> Writes to `docs/features/<area>/product-spec.md` — adjust for your repo's docs layout.
+
 ## Installation
 
 ### Option 1: npx skills (recommended)
@@ -66,3 +136,13 @@ npx skills add mayank-arora/agent-skills --skill clarify
 # Install to a specific agent
 npx skills add mayank-arora/agent-skills -a claude-code
 ```
+
+## Skill Pruning
+
+Every skill you download is personalized to whoever wrote it — not just their directories and commands, but their taste and judgment calls. Generalizing only goes so far. So prune any skill you install to fit you and your repo:
+
+1. **Run it** and let it read the output it produced. Have it check that output against the original intent and judge whether it will actually succeed for you.
+2. **If not, edit the skill** — reword instructions, fix paths, change whatever's off.
+3. **Run it again.**
+
+Two or three passes usually gets it right. It works best when you actively steer — tell it what's good and what isn't as it goes.
